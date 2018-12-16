@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  php:
+    build: php-fpm
+    volumes:
+    - ./src:/var/www/code
+    depends_on:
+    - mariadb
+  nginx:
+    image: nginx
+    ports:
+    - 8080:80
+    volumes:
+    - ./src:/var/www/code
+    - ./vhost:/etc/nginx/conf.d
+    depends_on:
+    - php
+  mariadb:
+    image: mariadb
+    volumes:
+    - ./sql/eval_basePHP.sql:/docker-entrypoint-initdb.d/dump.sql
+    container_name: mariadb
+    ports:
+    - '30000:3306'
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=admin
+    - MYSQL_DATABASE=eval_basePHP
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    depends_on:
+    - mariadb
+    ports:
+    - '50000:8080'
+    environment:
+    - ADMINER_DEFAULT_SERVER=mariadb

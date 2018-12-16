@@ -1,0 +1,47 @@
+body {
+    background-image: url("3355_tiger.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Raleway';
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+#Div {
+    border-color: white;
+    background: rgba(230, 237, 225, 0.7);
+    box-shadow: 1px 1px 15px black;
+    border-radius: 6px;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #ffb63b;
+    background-color: #ffffff;
+    border: 1px solid #fdf1c8;
+}
+.page-item.disabled .page-link {
+    color: #868e96;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #ffb63b;
+    border-color: #718393;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ffdf5c;
+    border-color: #fdf1c8;
+}
+.page-link:focus, .page-link:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ffdf5c;
+    border-color: #747678;
+}
